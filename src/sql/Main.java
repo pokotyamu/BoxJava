@@ -5,6 +5,8 @@
  */
 package sql;
 
+import box.AbstractBox;
+
 /**
  *
  * @author pokotyamu
@@ -17,11 +19,11 @@ public class Main {
     public static void main(String[] args) {
         String whereString = " WHERE ST_ID=1";
         
-        AbstractSQL sql1 = new ProductivitySize("PROJECTID","ACTUALA");
-        ProcessData ps1 = sql1.getProcessData(whereString);
+        AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
+        ProcessData ps1 = sql1.actionBox(whereString);
 
-        AbstractSQL sql2 = new ProductivityTime("PROJECTID", "MYAT");
-        ProcessData ps2 = sql2.getProcessData(whereString);
+        AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
+        ProcessData ps2 = sql2.actionBox(whereString);
       
         System.out.println(ps1.dataLabel());
         System.out.println(ps1.getPairs());
