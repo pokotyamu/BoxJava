@@ -5,7 +5,7 @@
  */
 package sql;
 
-//import box.AbstractBox;
+import box.AbstractBox;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author pokotyamu
  */
-public abstract class AbstractSQL{// extends AbstractBox{
+public abstract class AbstractSQL extends AbstractBox{
     private final String URL = "jdbc:derby://localhost:1527/PSP_for_E";
     private final String usr = "root";
     private final String pass = "root";
@@ -68,7 +68,8 @@ public abstract class AbstractSQL{// extends AbstractBox{
     
     //接続〜クローズまでを一括して実行
     //最終的に、このメソッドが呼ばれる
-    public ProcessData getProcessData(String whereString){
+    @Override
+    public ProcessData getProcessData(String whereString) {
         connection();
         ResultSet result = getResultSet(createSQL(whereString));
         ProcessData ps = new ProcessData(this.keyString,this.valueString,result);
