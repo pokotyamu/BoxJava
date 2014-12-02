@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sql;
+package sqlbox;
 
 /**
  *
  * @author pokotyamu
  */
-public class ProductivityTime extends AbstractSQL{
+public class ProductivityTime extends AbstractSQLBox{
     
     public ProductivityTime(String keyString, String valueString) {
         super(keyString, valueString);

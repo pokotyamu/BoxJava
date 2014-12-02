@@ -5,7 +5,7 @@
  */
 package box;
 
-import sql.ProcessData;
+import sqlbox.ProcessData;
 
 /**
  *
