@@ -39,10 +39,24 @@ public class ProcessData {
         }
     }
     
+    public ProcessData(String keyString,String valueString){
+        this.keyString = keyString;
+        this.valueString = valueString;
+        this.pairs = new ArrayList();
+    }
+    
     public List<Pair> getPairs(){
         return this.pairs;
     }
+    
+    public Pair getPair(int index){
+        return this.pairs.get(index);
+    }
 
+    public int getSize(){
+        return this.pairs.size();
+    }
+    
     public String dataLabel(){
         return "["+this.keyString+","+this.valueString+"]";
     }
@@ -52,7 +66,11 @@ public class ProcessData {
     }
     
     public String getValueString(){
-        return this.keyString;
+        return this.valueString;
+    }
+
+    public void addData(Pair addedPair) {
+        this.pairs.add(addedPair);
     }
     
 }

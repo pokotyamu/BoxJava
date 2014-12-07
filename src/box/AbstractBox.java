@@ -5,7 +5,6 @@
  */
 package box;
 
-import java.util.Iterator;
 import sqlbox.ProcessData;
 
 /**
@@ -26,7 +25,6 @@ public abstract class AbstractBox {
                 }
                 return function(pds);
         }
-    
         return null;
     }
 

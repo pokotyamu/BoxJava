@@ -30,5 +30,12 @@ public class Pair {
     public String toString(){
         return "["+x+","+y+"]";
     }
+
+    public boolean matchX(Pair p) {
+        if(x.equals(p.getX()))
+            return true;
+        else
+            return false;
+    }
     
 }

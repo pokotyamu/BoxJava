@@ -31,6 +31,9 @@ public class Main {
         System.out.println(ps2.dataLabel());
         System.out.println(ps2.getPairs());
         AbstractBox div = new Division();
-        div.actionBox(ps1,ps2);
+        
+        ProcessData pda = div.actionBox(ps1,ps2);
+        System.out.println(pda.dataLabel());
+        System.out.println(pda.getPairs());
     }
 }
