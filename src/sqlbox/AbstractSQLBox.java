@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sql;
+package sqlbox;
 
 import box.AbstractBox;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author pokotyamu
  */
-public abstract class AbstractSQL extends AbstractBox{
+public abstract class AbstractSQLBox extends AbstractBox{
     private final String URL = "jdbc:derby://localhost:1527/PSP_for_E";
     private final String usr = "root";
     private final String pass = "root";
@@ -31,7 +31,7 @@ public abstract class AbstractSQL extends AbstractBox{
     //実装部でSQLが変わる
     public abstract String createSQL(String whereString);
     
-    public AbstractSQL(String keyString,String valueString){
+    public AbstractSQLBox(String keyString,String valueString){
         this.keyString = keyString;
         this.valueString = valueString;
     }
@@ -41,7 +41,7 @@ public abstract class AbstractSQL extends AbstractBox{
         try {
             this.conn = DriverManager.getConnection(URL, usr, pass);
         } catch (SQLException ex) {
-            Logger.getLogger(AbstractSQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractSQLBox.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -50,7 +50,7 @@ public abstract class AbstractSQL extends AbstractBox{
         try {
             this.conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(AbstractSQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractSQLBox.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -61,7 +61,7 @@ public abstract class AbstractSQL extends AbstractBox{
             Statement stmt = this.conn.createStatement();
             result = stmt.executeQuery(sql);
         } catch (SQLException ex) {
-            Logger.getLogger(AbstractSQL.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AbstractSQLBox.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }

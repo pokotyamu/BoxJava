@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sql;
+package sqlbox;
 
 
 /**
  *
  * @author pokotyamu
  */
-public class ProductivitySize extends AbstractSQL{
+public class ProductivitySize extends AbstractSQLBox{
 
     public ProductivitySize(String keyString, String valueString) {
         super(keyString, valueString);

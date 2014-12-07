@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sql;
+package sqlbox;
 
 /**
  *
@@ -29,6 +29,13 @@ public class Pair {
     @Override
     public String toString(){
         return "["+x+","+y+"]";
+    }
+
+    public boolean matchX(Pair p) {
+        if(x.equals(p.getX()))
+            return true;
+        else
+            return false;
     }
     
 }
