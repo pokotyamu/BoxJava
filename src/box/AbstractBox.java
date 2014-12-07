@@ -15,8 +15,13 @@ public abstract class AbstractBox {
     
     public ProcessData actionBox(Object... args){
         switch(args[0].getClass().getName()){
+            
+            //AbstractSQL
+            //SQLの条件が引数として渡された時の処理
             case "java.lang.String":
                 return getProcessData((String) args[0]);
+            //AbstaractFunctionBox　
+            //プロセスデータが引数として渡された時の処理
             case "sqlbox.ProcessData":
                 //Listに再度キャストし直す※要検討
                 ProcessData[] pds = new ProcessData[100];
