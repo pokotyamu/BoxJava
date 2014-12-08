@@ -6,12 +6,18 @@
 package Functionbox;
 
 import sqlbox.Pair;
+import sqlbox.ProcessData;
 
 /**
  *
  * @author pokotyamu
  */
 public class MtoH extends AbstractFunctionBox{
+    
+    @Override
+    protected ProcessData initProcessData(ProcessData pd){
+        return new ProcessData(pd.getKeyString(), pd.getValueString()+"(h)");
+    }
     
     @Override
     public Pair function(Pair p){
