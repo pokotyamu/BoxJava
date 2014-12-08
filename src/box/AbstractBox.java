@@ -13,19 +13,12 @@ import sqlbox.ProcessData;
  */
 public abstract class AbstractBox {
     
-    public ProcessData actionBox(Object... args){
-        switch(args[0].getClass().getName()){
-            case "java.lang.String":
-                return getProcessData((String) args[0]);
-            case "sqlbox.ProcessData":
-                //Listに再度キャストし直す※要検討
-                ProcessData[] pds = new ProcessData[100];
-                for(int index = 0; index < args.length; index++){
-                    pds[index] = (ProcessData) args[index];
-                }
-                return function(pds);
-        }
-        return null;
+    public ProcessData actionBox(String whereString){
+        return getProcessData(whereString);
+    }
+    
+    public ProcessData actionBox(ProcessData... pds){
+        return function(pds);
     }
 
     public ProcessData function(ProcessData... args) {
