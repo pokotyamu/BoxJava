@@ -9,7 +9,6 @@ import Functionbox.Division;
 import Functionbox.MtoH;
 import Functionbox.Productivity;
 import box.AbstractBox;
-import java.util.Dictionary;
 
 /**
  *
@@ -22,19 +21,19 @@ public class Main {
      */
     public static void main(String[] args) {
         String whereString = " WHERE ST_ID=1";
+        
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
-        ProcessData ps1 = sql1.actionBox(whereString);
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
-        ProcessData ps2 = sql2.actionBox(whereString);
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
         ProcessData pda = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        
+        
         AbstractBox productivity = new Productivity();
         ProcessData pro = productivity.actionBox(whereString);
         
+        
         div.actionBox(productivity.actionBox(whereString),pda);
-        ps1.debugPrint();
-        ps2.debugPrint();
         pda.debugPrint();
         pro.debugPrint();
     }
