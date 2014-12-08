@@ -15,7 +15,9 @@ public abstract class AbstractBox {
     
     public ProcessData actionBox(Object... args){
         switch(args[0].getClass().getName()){
-            
+            //加工プロセス要素が引数として渡された時の処理
+            case "AbstractBox":
+                return ((AbstractBox) args[0]).actionBox(args);
             //AbstractSQL
             //SQLの条件が引数として渡された時の処理
             case "java.lang.String":

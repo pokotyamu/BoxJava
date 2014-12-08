@@ -6,6 +6,7 @@
 package sqlbox;
 
 import Functionbox.Division;
+import Functionbox.MtoH;
 import box.AbstractBox;
 
 /**
@@ -29,9 +30,12 @@ public class Main {
         System.out.println(ps1.dataLabel());
         System.out.println(ps1.getPairs());
         System.out.println(ps2.dataLabel());
+        
+        AbstractBox mtoh = new MtoH();
+        
         System.out.println(ps2.getPairs());
         AbstractBox div = new Division();
-        
+        ProcessData pdpd = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         ProcessData pda = div.actionBox(ps1,ps2);
         System.out.println(pda.dataLabel());
         System.out.println(pda.getPairs());
