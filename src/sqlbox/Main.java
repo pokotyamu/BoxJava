@@ -26,8 +26,7 @@ public class Main {
         ProcessData ps2 = sql2.actionBox(whereString);
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
-        ProcessData pdpd = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
-        ProcessData pda = div.actionBox(ps1,ps2);
+        ProcessData pda = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         ps1.debugPrint();
         ps2.debugPrint();
         mtoh.actionBox(sql2.actionBox(whereString)).debugPrint();
