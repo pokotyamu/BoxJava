@@ -48,6 +48,11 @@ public abstract class AbstractFunctionBox extends AbstractBox{
         return pd;
     }
     
+    @Override
+    public ProcessData function(String whereString){
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     protected Pair function(Pair p1,Pair p2){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

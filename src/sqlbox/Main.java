@@ -7,7 +7,9 @@ package sqlbox;
 
 import Functionbox.Division;
 import Functionbox.MtoH;
+import Functionbox.Productivity;
 import box.AbstractBox;
+import java.util.Dictionary;
 
 /**
  *
@@ -27,9 +29,13 @@ public class Main {
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
         ProcessData pda = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        AbstractBox productivity = new Productivity();
+        ProcessData pro = productivity.actionBox(whereString);
+        
+        div.actionBox(productivity.actionBox(whereString),pda);
         ps1.debugPrint();
         ps2.debugPrint();
-        mtoh.actionBox(sql2.actionBox(whereString)).debugPrint();
         pda.debugPrint();
+        pro.debugPrint();
     }
 }
