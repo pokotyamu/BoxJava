@@ -73,4 +73,8 @@ public class ProcessData {
         this.pairs.add(addedPair);
     }
     
+    public void debugPrint(){
+        System.out.println(dataLabel());
+        System.out.println(getPairs());
+    }
 }
