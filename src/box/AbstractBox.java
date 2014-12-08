@@ -13,11 +13,8 @@ import sqlbox.ProcessData;
  */
 public abstract class AbstractBox {
     
-    public ProcessData actionBox(Object... args){
+    /*public ProcessData actionBox(Object... args){
         switch(args[0].getClass().getName()){
-            //加工プロセス要素が引数として渡された時の処理
-            case "AbstractBox":
-                return ((AbstractBox) args[0]).actionBox(args);
             //AbstractSQL
             //SQLの条件が引数として渡された時の処理
             case "java.lang.String":
@@ -25,14 +22,23 @@ public abstract class AbstractBox {
             //AbstaractFunctionBox　
             //プロセスデータが引数として渡された時の処理
             case "sqlbox.ProcessData":
-                //Listに再度キャストし直す※要検討
+        //Listに再度キャストし直す※要検討
+                System.out.println("hoge");
                 ProcessData[] pds = new ProcessData[100];
                 for(int index = 0; index < args.length; index++){
                     pds[index] = (ProcessData) args[index];
                 }
                 return function(pds);
-        }
+        }    
         return null;
+    }*/
+    
+    public ProcessData actionBox(String whereString){
+        return getProcessData(whereString);
+    }
+    
+    public ProcessData actionBox(ProcessData... pds){
+        return function(pds);
     }
 
     public ProcessData function(ProcessData... args) {
