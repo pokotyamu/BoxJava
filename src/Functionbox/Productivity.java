@@ -6,7 +6,7 @@
 package Functionbox;
 
 import box.AbstractBox;
-import sqlbox.ProcessData;
+import sqlbox.UserData;
 import sqlbox.ProductivitySize;
 import sqlbox.ProductivityTime;
 
@@ -16,7 +16,7 @@ import sqlbox.ProductivityTime;
  */
 public class Productivity extends AbstractFunctionBox{
     @Override
-    public ProcessData function(String whereString){
+    public UserData function(String whereString){
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();

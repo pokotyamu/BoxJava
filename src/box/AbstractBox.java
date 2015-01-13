@@ -6,7 +6,7 @@
 package box;
 
 import sqlbox.AbstractSQLBox;
-import sqlbox.ProcessData;
+import sqlbox.UserData;
 
 /**
  *
@@ -14,7 +14,7 @@ import sqlbox.ProcessData;
  */
 public abstract class AbstractBox {
     
-    public ProcessData actionBox(String whereString){
+    public UserData actionBox(String whereString){
         if(this instanceof AbstractSQLBox){
             return getProcessData(whereString);
         }else{
@@ -22,19 +22,19 @@ public abstract class AbstractBox {
         }
     }
     
-    public ProcessData actionBox(ProcessData... pds){
+    public UserData actionBox(UserData... pds){
         return function(pds);
     }
 
-    public ProcessData function(ProcessData... args) {
+    public UserData function(UserData... args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ProcessData getProcessData(String whereString) {
+    public UserData getProcessData(String whereString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public ProcessData function(String whereString) {
+    public UserData function(String whereString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

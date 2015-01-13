@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author pokotyamu
  */
-public class ProcessData {
+public class UserData {
     
     List<Pair> pairs;
 
@@ -26,7 +26,7 @@ public class ProcessData {
 
     //複数人のデータを対象にすることはまだ実装できていない
     //さらに上のくくりでまとめる必要がある
-    public ProcessData(String keyString, String valueString, ResultSet result) {
+    public UserData(String keyString, String valueString, ResultSet result) {
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();
@@ -35,11 +35,11 @@ public class ProcessData {
                 pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
             }       
         } catch (SQLException ex) {
-            Logger.getLogger(ProcessData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public ProcessData(String keyString,String valueString){
+    public UserData(String keyString,String valueString){
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();

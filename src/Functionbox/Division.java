@@ -6,7 +6,7 @@
 package Functionbox;
 
 import sqlbox.Pair;
-import sqlbox.ProcessData;
+import sqlbox.UserData;
 
 /**
  *
@@ -15,8 +15,8 @@ import sqlbox.ProcessData;
 public class Division extends AbstractFunctionBox{
 
     @Override
-    protected ProcessData initProcessData(ProcessData pd1, ProcessData pd2){
-        return new ProcessData(pd1.getKeyString(), pd1.getValueString()+"/"+pd2.getValueString());
+    protected UserData initProcessData(UserData pd1, UserData pd2){
+        return new UserData(pd1.getKeyString(), pd1.getValueString()+"/"+pd2.getValueString());
     }
     
     @Override
