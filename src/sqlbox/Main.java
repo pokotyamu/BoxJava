@@ -26,11 +26,11 @@ public class Main {
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
-        ProcessData pda = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        UserData pda = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         
         
         AbstractBox productivity = new Productivity();
-        ProcessData pro = productivity.actionBox(whereString);
+        UserData pro = productivity.actionBox(whereString);
         
         
         div.actionBox(productivity.actionBox(whereString),pda);

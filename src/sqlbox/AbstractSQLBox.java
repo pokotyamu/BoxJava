@@ -69,10 +69,10 @@ public abstract class AbstractSQLBox extends AbstractBox{
     //接続〜クローズまでを一括して実行
     //最終的に、このメソッドが呼ばれる
     @Override
-    public ProcessData getProcessData(String whereString) {
+    public UserData getProcessData(String whereString) {
         connection();
         ResultSet result = getResultSet(createSQL(whereString));
-        ProcessData ps = new ProcessData(this.keyString,this.valueString,result);
+        UserData ps = new UserData(this.keyString,this.valueString,result);
         close();
         return ps;
     }
