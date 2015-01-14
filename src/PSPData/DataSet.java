@@ -30,7 +30,7 @@ public class DataSet {
     public ArrayList<UserData> getUserDatas(){
         ArrayList<UserData> temp = new ArrayList();
         for(UserData userdata : userdatas){
-            temp.add(userdata);
+            temp.add(userdata.clone());
         }
         return temp;        
     }
