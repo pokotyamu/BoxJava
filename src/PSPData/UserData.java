@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sqlbox;
+package PSPData;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

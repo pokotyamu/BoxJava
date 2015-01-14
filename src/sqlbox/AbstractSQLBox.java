@@ -5,6 +5,7 @@
  */
 package sqlbox;
 
+import PSPData.UserData;
 import box.AbstractBox;
 import java.sql.Connection;
 import java.sql.DriverManager;
