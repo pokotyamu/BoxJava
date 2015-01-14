@@ -77,4 +77,13 @@ public class UserData {
         System.out.println(dataLabel());
         System.out.println(getPairs());
     }
+    
+    @Override
+    public UserData clone(){
+        UserData userdata = new UserData(keyString, valueString);
+        for(Pair p : this.pairs){
+            userdata.addData(p);
+        }
+        return userdata;
+    }
 }
