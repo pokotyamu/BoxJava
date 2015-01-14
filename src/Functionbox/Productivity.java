@@ -6,7 +6,7 @@
 package Functionbox;
 
 import box.AbstractBox;
-import sqlbox.UserData;
+import PSPData.UserData;
 import sqlbox.ProductivitySize;
 import sqlbox.ProductivityTime;
 

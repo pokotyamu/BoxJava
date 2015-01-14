@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sqlbox;
+package PSPData;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -76,5 +76,14 @@ public class UserData {
     public void debugPrint(){
         System.out.println(dataLabel());
         System.out.println(getPairs());
+    }
+    
+    @Override
+    public UserData clone(){
+        UserData userdata = new UserData(keyString, valueString);
+        for(Pair p : this.pairs){
+            userdata.addData(p);
+        }
+        return userdata;
     }
 }

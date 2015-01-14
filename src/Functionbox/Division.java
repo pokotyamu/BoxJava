@@ -5,8 +5,8 @@
  */
 package Functionbox;
 
-import sqlbox.Pair;
-import sqlbox.UserData;
+import PSPData.Pair;
+import PSPData.UserData;
 
 /**
  *

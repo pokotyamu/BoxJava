@@ -6,7 +6,7 @@
 package box;
 
 import sqlbox.AbstractSQLBox;
-import sqlbox.UserData;
+import PSPData.UserData;
 
 /**
  *
