@@ -24,17 +24,17 @@ public abstract class AbstractFunctionBox extends AbstractBox{
     }
     
     protected UserData function(UserData ps){
-        UserData pd = initProcessData(ps);
+        UserData userdata = initUserData(ps);
         Pair temppPair;
         for(int index=0;index < ps.getSize();index++){
             temppPair = ps.getPair(index);
-            pd.addData(function(temppPair));
+            userdata.addData(function(temppPair));
         }
-        return pd;
+        return userdata;
     }
 
     protected UserData function(UserData ps1,UserData ps2){
-        UserData pd = initProcessData(ps1,ps2);
+        UserData userdata = initUserData(ps1,ps2);
         Pair tempps1p;
         Pair tempps2p;
         for(int index=0;index < ps1.getSize();index++){
@@ -42,10 +42,10 @@ public abstract class AbstractFunctionBox extends AbstractBox{
             tempps2p = ps2.getPair(index);
             //マッチングｙ同士のものについては要検討
             if(tempps1p.matchX(tempps2p)){                
-                pd.addData(function(tempps1p,tempps2p));
+                userdata.addData(function(tempps1p,tempps2p));
             }
         }
-        return pd;
+        return userdata;
     }
     
     @Override
@@ -63,11 +63,11 @@ public abstract class AbstractFunctionBox extends AbstractBox{
     
     
 
-    protected UserData initProcessData(UserData ps1, UserData ps2){
+    protected UserData initUserData(UserData ps1, UserData ps2){
         return new UserData("", "");
     }
 
-    protected UserData initProcessData(UserData ps) {
+    protected UserData initUserData(UserData ps) {
         return new UserData("", "");
     }
 

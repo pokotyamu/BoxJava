@@ -23,7 +23,7 @@ public class DataSet {
         this.yname = yname;
     }
 
-    public void addProcessData(UserData data){
+    public void addUserData(UserData data){
         this.userdatas.add(data);
     }    
     

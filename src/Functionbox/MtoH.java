@@ -15,8 +15,8 @@ import PSPData.UserData;
 public class MtoH extends AbstractFunctionBox{
     
     @Override
-    protected UserData initProcessData(UserData pd){
-        return new UserData(pd.getKeyString(), pd.getValueString()+"(h)");
+    protected UserData initUserData(UserData userdata){
+        return new UserData(userdata.getKeyString(), userdata.getValueString()+"(h)");
     }
     
     @Override
