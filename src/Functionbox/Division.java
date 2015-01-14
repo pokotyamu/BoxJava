@@ -15,8 +15,8 @@ import PSPData.UserData;
 public class Division extends AbstractFunctionBox{
 
     @Override
-    protected UserData initProcessData(UserData pd1, UserData pd2){
-        return new UserData(pd1.getKeyString(), pd1.getValueString()+"/"+pd2.getValueString());
+    protected UserData initUserData(UserData userdata1, UserData userdata2){
+        return new UserData(userdata1.getKeyString(), userdata1.getValueString()+"/"+userdata2.getValueString());
     }
     
     @Override

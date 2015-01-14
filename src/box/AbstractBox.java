@@ -16,21 +16,21 @@ public abstract class AbstractBox {
     
     public UserData actionBox(String whereString){
         if(this instanceof AbstractSQLBox){
-            return getProcessData(whereString);
+            return getUserData(whereString);
         }else{
             return function(whereString);
         }
     }
     
-    public UserData actionBox(UserData... pds){
-        return function(pds);
+    public UserData actionBox(UserData... userdatas){
+        return function(userdatas);
     }
 
     public UserData function(UserData... args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public UserData getProcessData(String whereString) {
+    public UserData getUserData(String whereString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
