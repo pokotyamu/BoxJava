@@ -35,7 +35,7 @@ public class DataSet {
         return temp;        
     }
     
-    public UserData getProcessData(int index){
+    public UserData getUserData(int index){
         return userdatas.get(index).clone();
     }
     public int getUserDataSize(){
