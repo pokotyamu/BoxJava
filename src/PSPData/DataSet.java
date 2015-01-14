@@ -5,10 +5,62 @@
  */
 package PSPData;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pokotyamu
  */
 public class DataSet {
+    
+    private ArrayList<UserData> userdatas;
+    private String xname;
+    private String yname;
+    
+    public DataSet(String xname,String yname){
+        this.userdatas = new ArrayList();
+        this.xname = xname;
+        this.yname = yname;
+    }
+
+    public void addProcessData(UserData data){
+        this.userdatas.add(data);
+    }    
+    
+    public ArrayList<UserData> getUserDatas(){
+        ArrayList<UserData> temp = new ArrayList();
+        for(UserData userdata : userdatas){
+            temp.add(userdata.clone());
+        }
+        return temp;        
+    }
+    
+    public UserData getUserData(int index){
+        return userdatas.get(index).clone();
+    }
+    public int getUserDataSize(){
+        return userdatas.size();
+    }
+
+    public void setUserData(int index, UserData userdata) {
+        userdatas.set(index, userdata);
+    }
+    
+    public String getXname(){
+        return xname;
+    }
+    
+    public void setXname(String xname){
+        this.xname = xname;
+    }
+    
+    public void setYname(String yname){
+        this.yname = yname;
+    }
+    
+    public String getYname(){
+        return yname;
+    }
+    
     
 }
