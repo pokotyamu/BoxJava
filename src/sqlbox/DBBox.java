@@ -5,6 +5,8 @@
  */
 package sqlbox;
 import PSPData.DataSet;
+import PSPData.UserData;
+import java.sql.ResultSet;
 
 /**
  *
@@ -12,9 +14,11 @@ import PSPData.DataSet;
  */
 public class DBBox extends AbstractSQLBox{
     
+    // 指定されたxyデータをとってくる
     public static DataSet action(String xname, String yname, String sql)
     {
-        DataSet Output = new DataSet();
+        DataSet Output = new DataSet(xname, yname);
+        Output.addUserData(getProcessData(sql));
         return Output;
     }
     
@@ -26,9 +30,18 @@ public class DBBox extends AbstractSQLBox{
     
     @Override
     public String createSQL (String whereString)
-
     {
-        return whereString;
+        return "select * from ROOT.PSPASSGTDATA" + whereString;
        
+    }
+    
+    @Override
+    public UserData getProcessData(String whereString)
+    {
+        connection();
+        ResultSet result = getResultSet(createSQL(whereString));
+        UserData ps = new UserData(this.keyString, this.valueString, result);
+        close();
+        return ps;
     }
 }
