@@ -18,7 +18,7 @@ public class DBBox extends AbstractSQLBox{
     public static DataSet action(String xname, String yname, String sql)
     {
         DataSet Output = new DataSet(xname, yname);
-        Output.addUserData(getProcessData(sql));
+        Output.addUserData(getUserData(sql));
         return Output;
     }
     
@@ -34,12 +34,12 @@ public class DBBox extends AbstractSQLBox{
         return "select * from ROOT.PSPASSGTDATA" + whereString;
        
     }
-    
+ 
     @Override
-    public UserData getProcessData(String whereString)
+    public UserData getUserData(String whereString)
     {
         connection();
-        ResultSet result = getResultSet(createSQL(whereString));
+        ResultSet result = getResultSet(createSQL,(whereStriing));
         UserData ps = new UserData(this.keyString, this.valueString, result);
         close();
         return ps;
