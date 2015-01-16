@@ -17,10 +17,10 @@ public class DBBox extends AbstractSQLBox{
     // 指定されたxyデータをとってくる
     public static DataSet action(String xname, String yname, String sql)
     {
-        DataSet Output = new DataSet(xname, yname);
-        DBBox Object = new DBBox(xname, yname);
-        Output.addUserData(Object.getUserData(sql));
-        return Output;
+        DataSet outputds = new DataSet(xname, yname);
+        DBBox dbbox = new DBBox(xname, yname);
+        outputds.addUserData(dbbox.getUserData(sql));
+        return outputds;
     }
     
     
@@ -32,7 +32,7 @@ public class DBBox extends AbstractSQLBox{
     @Override
     public String createSQL (String whereString)
     {
-        return "select * from ROOT.PSPASSGTDATA" + whereString;
+        return "select * from ROOT.PSPASSGTDATA " + whereString;
        
     }
 }
