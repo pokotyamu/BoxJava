@@ -29,6 +29,7 @@ public class Main {
         AbstractBox div = new Division();
         UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         
+        userdata = DBBox.action("PROJECTID","ACTLOC",whereString).getUserData(0);
         
         AbstractBox productivity = new Productivity();
         UserData pro = productivity.actionBox(whereString);
