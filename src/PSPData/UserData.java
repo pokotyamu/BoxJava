@@ -30,9 +30,14 @@ public class UserData {
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();
+        int project_ID = 400;
         try {
             while (result.next()) {
-                pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+                if(project_ID == result.getInt("PROJECTID"))
+                {
+                    pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+                    project_ID++;
+                }
             }       
         } catch (SQLException ex) {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
