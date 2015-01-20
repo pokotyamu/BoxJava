@@ -17,7 +17,7 @@ public class ProductivityTime extends AbstractSQLBox{
 
     @Override
     public String createSQL(String whereString) {        
-        return "select * from ROOT.PROJECTS" + whereString;
+        return "select * from ROOT.PROJECTS" + whereString + "ORDER BY PROJECTID";
     }
     
 }

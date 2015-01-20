@@ -30,9 +30,15 @@ public class UserData {
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();
-        int project_ID = 400;
+        int project_ID = 0;
+        int count = 0;
         try {
             while (result.next()) {
+                if(count == 0)
+                {
+                    project_ID = result.getInt("PROJECTID");
+                    count++;
+                }
                 if(project_ID == result.getInt("PROJECTID"))
                 {
                     pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));

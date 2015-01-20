@@ -27,15 +27,17 @@ public class Main {
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
-        UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+       // UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         
         
         AbstractBox productivity = new Productivity();
-        UserData pro = productivity.actionBox(whereString);
+        //UserData pro = productivity.actionBox(whereString);
         
+        UserData userdata = DBBox.action("PROJECTID", "MYAT", whereString).getUserData(0);
+        //userdata = sql2.actionBox(whereString);
         
-        div.actionBox(productivity.actionBox(whereString),userdata);
+        //div.actionBox(productivity.actionBox(whereString),userdata);
         userdata.debugPrint();
-        pro.debugPrint();
+        //pro.debugPrint();
     }
 }
