@@ -32,7 +32,7 @@ public class DBBox extends AbstractSQLBox{
     @Override
     public String createSQL (String whereString)
     {
-        return "select * from ROOT.PROJECTS " + whereString + "AND PROJECTID>=401" + "ORDER BY PROJECTID";
+        return "select * from ROOT.PSPASSGTDATA " + whereString + "AND PROJECTID>=401" + "ORDER BY PROJECTID";
        
     }
 }
