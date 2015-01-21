@@ -13,7 +13,6 @@ import java.sql.ResultSet;
  * @author kaori
  */
 public class DBBox extends AbstractSQLBox{
-    
     // 指定されたxyデータをとってくる
     public static DataSet action(String xname, String yname, String sql)
     {

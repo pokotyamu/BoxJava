@@ -5,7 +5,7 @@
  */
 package sqlbox;
 
-import Functionbox.ACTLOC;
+import Functionbox.*;
 import PSPData.UserData;
 import Functionbox.Division;
 import Functionbox.MtoH;
@@ -34,8 +34,8 @@ public class Main {
         UserData pro = productivity.actionBox(whereString);
         
         //userdata = DBBox.action("PROJECTID", "ACTLOC", whereString).getUserData(0);
-        AbstractBox actloc = new ACTLOC();
-        userdata = actloc.actionBox(whereString);
+        AbstractBox productivity_k = new Productivity_k();
+        userdata = productivity_k.actionBox(whereString);
         
         div.actionBox(productivity.actionBox(whereString),userdata);
         userdata.debugPrint();
