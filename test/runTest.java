@@ -15,6 +15,8 @@ public class runTest {
     public void main(String[] args)
     {
         System.out.println("Test runTest!");
+        //UserData userdata = testACTLOC.testACTLOC().getUserData(0);
+        //userdata.debugPrint();
         //PrintDataSet(testACTLOC.testACTLOC());
     }
     
