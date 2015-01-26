@@ -79,6 +79,15 @@ public abstract class AbstractSQLBox extends AbstractBox{
     }
     
     // SUBMITION_ID が指定された時
+    public UserData actionBox(String whereString, String submitionID){
+        if(this instanceof AbstractSQLBox){
+            return getUserData(whereString, submitionID);
+        }else{
+            return function(whereString);
+        }
+    }
+    
+    // SUBMITION_ID が指定された時
     public UserData getUserData(String whereString, String submitionID)
     {
         connection();
