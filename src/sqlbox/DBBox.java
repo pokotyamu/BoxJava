@@ -18,7 +18,7 @@ public class DBBox extends AbstractSQLBox{
     {
         DataSet outputds = new DataSet(xname, yname);
         DBBox dbbox = new DBBox(xname, yname);
-        outputds.addUserData(dbbox.getUserData(sql));
+        outputds.addUserData(dbbox.getUserData(sql,"1"));
         return outputds;
     }
     
@@ -31,7 +31,7 @@ public class DBBox extends AbstractSQLBox{
     @Override
     public String createSQL (String whereString)
     {
-        return "select * from ROOT.PSPASSGTDATA " + whereString + "ORDER BY PROJECTID";
+        return "select * from ROOT.PSPASSGTDATA " + whereString;
        
     }
 }

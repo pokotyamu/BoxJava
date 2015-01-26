@@ -58,6 +58,7 @@ public class UserData {
         try {
             while (result.next()) 
             {
+                //System.out.println(result.getObject(valueString));
                 pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
             }       
         } catch (SQLException ex) {
