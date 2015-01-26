@@ -50,6 +50,21 @@ public class UserData {
         }
     }
     
+    // SUBMITION_ID が指定された時
+    public UserData(String keyString, String valueString, ResultSet result, String submitionID) {
+        this.keyString = keyString;
+        this.valueString = valueString;
+        this.pairs = new ArrayList();
+        try {
+            while (result.next()) 
+            {
+                pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+            }       
+        } catch (SQLException ex) {
+            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public UserData(String keyString,String valueString){
         this.keyString = keyString;
         this.valueString = valueString;

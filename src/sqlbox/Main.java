@@ -34,8 +34,8 @@ public class Main {
         UserData pro = productivity.actionBox(whereString);
         
         //userdata = DBBox.action("PROJECTID", "ACTLOC", whereString).getUserData(0);
-        AbstractBox productivity_k = new Productivity_k();
-        userdata = productivity_k.actionBox(whereString);
+        //AbstractBox productivity_k = new Productivity_k();
+        //userdata = productivity_k.actionBox(whereString);
         
         div.actionBox(productivity.actionBox(whereString),userdata);
         userdata.debugPrint();

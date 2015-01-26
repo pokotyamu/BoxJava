@@ -77,4 +77,14 @@ public abstract class AbstractSQLBox extends AbstractBox{
         close();
         return ps;
     }
+    
+    // SUBMITION_ID が指定された時
+    public UserData getUserData(String whereString, String submitionID)
+    {
+        connection();
+        ResultSet result = getResultSet(createSQL(whereString));
+        UserData ps = new UserData(this.keyString,this.valueString,result,submitionID);
+        close();
+        return ps;
+    }
 }
