@@ -5,6 +5,7 @@
  */
 package sqlbox;
 
+import Functionbox.*;
 import PSPData.UserData;
 import Functionbox.Division;
 import Functionbox.MtoH;
@@ -21,19 +22,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String whereString = " WHERE ST_ID=1";
+        String whereString = " WHERE ST_ID=1 AND SUBMITION_ID=1ORDER BY PROJECTID ASC, SUBMITION_ID ASC";
         
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
         UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
-        
-        
+         
         AbstractBox productivity = new Productivity();
         UserData pro = productivity.actionBox(whereString);
         
-        
+        // SUBMITION_ID の指定があった時
+        AbstractSQLBox sql3 = new DBBox("PROJECTID","ACTMIN");
+        userdata = sql3.actionBox(whereString,"1");
+       
         div.actionBox(productivity.actionBox(whereString),userdata);
         userdata.debugPrint();
         pro.debugPrint();
