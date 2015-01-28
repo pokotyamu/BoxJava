@@ -22,7 +22,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String whereString = " WHERE ST_ID=1 AND SUBMITION_ID=1ORDER BY PROJECTID ASC, SUBMITION_ID ASC";
+        String whereString = " WHERE ST_ID=1 AND SUBMITION_ID=2 ORDER BY PROJECTID ASC, SUBMITION_ID ASC";
         
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
