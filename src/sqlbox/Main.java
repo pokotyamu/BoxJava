@@ -22,23 +22,23 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String whereString = " WHERE ST_ID=1 ORDER BY ST_ID ASC, PROJECTID ASC, SUBMITION_ID DESC";
+        String whereString = "WHERE ST_ID=1 AND MOD(PROJECTID,2) = 1 ORDER BY ST_ID ASC, PROJECTID ASC, SUBMITION_ID DESC";
         
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
-        UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        //UserData userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
          
         AbstractBox productivity = new Productivity();
-        UserData pro = productivity.actionBox(whereString);
+        //UserData pro = productivity.actionBox(whereString);
         
         // SUBMITION_ID の指定があった時
         AbstractSQLBox sql3 = new DBBox("PROJECTID","ACTMIN");
-        userdata = sql3.actionBox(whereString);
+        UserData userdata = sql3.actionBox(whereString);
        
-        div.actionBox(productivity.actionBox(whereString),userdata);
+        //div.actionBox(productivity.actionBox(whereString),userdata);
         userdata.debugPrint();
-        pro.debugPrint();
+        //pro.debugPrint();
     }
 }

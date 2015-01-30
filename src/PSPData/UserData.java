@@ -30,19 +30,20 @@ public class UserData {
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();
-        int project_ID = 0;
-        int count = 0;
+        int project_ID = -1;
+        int count = -1;
         try {
             while (result.next()) {
-                if(count == 0)
+                if(count < 0)
                 {
                     project_ID = result.getInt("PROJECTID");
-                    count++;
+                    pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+                    count = 1;
                 }
-                if(project_ID == result.getInt("PROJECTID"))
+                if(project_ID != result.getInt("PROJECTID"))
                 {
                     pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
-                    project_ID++;
+                    project_ID = result.getInt("PROJECTID");
                 }
             }       
         } catch (SQLException ex) {
