@@ -56,32 +56,12 @@ public class UserData {
         this.keyString = keyString;
         this.valueString = valueString;
         this.pairs = new ArrayList();
-        DataSet dataset = new DataSet(keyString, valueString);
-        int st_id = -1;
-        int count = -1;
         try {
             while (result.next()) 
             {
-                if(count < 0)
-                {
-                    st_id = result.getInt("ST_ID");
-                    count = 1;
-                }
-                if(st_id == result.getInt("ST_ID"))
-                {
-                    System.out.println("みんな同じ");
-                    pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
-                }else
-                {
-                    System.out.println("みんな違って、みんないい");
-                    dataset.addUserData((UserData)pairs);
-                    this.pairs = new ArrayList();
-                    pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
-                    st_id = result.getInt("ST_ID");
-                }
-                    //System.out.println(result.getObject(valueString));
-                    //pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
-            }   
+                //System.out.println(result.getObject(valueString));
+                pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+            }       
         } catch (SQLException ex) {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         }
