@@ -18,7 +18,7 @@ public class ProductivitySize extends AbstractSQLBox{
     
     @Override
     public String createSQL(String whereString) {
-        return "select * from ROOT.PROGRAMSIZE" + whereString;    
+        return "select * from ROOT.PROGRAMSIZE " + whereString;    
     }
     
     
