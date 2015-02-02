@@ -26,18 +26,13 @@ public class Max extends AbstractFunctionBox{
         DataSet dataset = initDataSet(ds);
         UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         for(int index = 0; index < dataset.getUserData(0).getSize(); index++ )
-        {
-            boolean flg = true;
-            Pair tempPair = null;
-            for(UserData ud : ds.getUserDatas())
+        {            
+            Pair tempPair = dataset.getUserData(0).getPair(0);
+            for(int i = 1; i < dataset.getUserDataSize(); i++)
             {
-                if(flg)
+                if(tempPair.matchX(dataset.getUserData(i).getPair(index)) && (double)tempPair.getY() < (double)dataset.getUserData(i).getPair(index).getY())
                 {
-                    tempPair = ud.getPair(index);
-                    flg = false;
-                }else if((double)tempPair.getY() < (double)ud.getPair(index).getY())
-                {
-                    tempPair = ud.getPair(index);
+                    tempPair = dataset.getUserData(i).getPair(index);
                 }
             }
             addedUserData.addData(tempPair);
@@ -46,12 +41,4 @@ public class Max extends AbstractFunctionBox{
         return dataset;
     }
     
-    @Override
-    protected Pair function(Pair p1,Pair p2){
-        if (Double.valueOf((String) p1.getY()) > Double.valueOf((String) p2.getY())){
-            return p1;
-        }else{
-            return p2;
-        }
-    }
 }
