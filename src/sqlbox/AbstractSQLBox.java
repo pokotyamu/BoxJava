@@ -5,6 +5,8 @@
  */
 package sqlbox;
 
+import PSPData.DataSet;
+import PSPData.Pair;
 import PSPData.UserData;
 import box.AbstractBox;
 import java.sql.Connection;
@@ -95,5 +97,34 @@ public abstract class AbstractSQLBox extends AbstractBox{
         UserData ps = new UserData(this.keyString,this.valueString,result,submitionID);
         close();
         return ps;
+    }
+    
+    
+    public DataSet getDataSet(String wheresString){
+        
+        DataSet ds = new DataSet(this.keyString, this.valueString);
+        connection();
+        //ResultSetをとってくる。
+        ResultSet rs = getResultSet(createSQL(wheresString));
+        UserData ud = new UserData(keyString, valueString);
+        try {    
+            while (rs.next()){
+                if(ud.getST_ID() < 0){
+                    ud.setST_ID(rs.getInt("ST_ID"));
+                    ud.setClass_ID(rs.getInt("Class_ID"));
+                }else{
+                    if(ud.getST_ID() != rs.getInt("ST_ID") && ud.getClass_ID() != rs.getInt("Class_ID")){
+                        ds.addUserData(ud);
+                        ud = new UserData(keyString, valueString,rs.getInt("ST_ID"),rs.getInt("Class_ID"));
+                    }
+                }
+                ud.addData(new Pair(rs.getObject(this.keyString), rs.getObject(this.valueString), rs.getInt("SUBMITION_ID")));
+            }
+            ds.addUserData(ud);
+        } catch (SQLException ex) {
+            Logger.getLogger(AbstractSQLBox.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        close();
+        return ds;
     }
 }
