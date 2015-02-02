@@ -5,6 +5,7 @@
  */
 package box;
 
+import PSPData.DataSet;
 import sqlbox.AbstractSQLBox;
 import PSPData.UserData;
 
@@ -14,27 +15,27 @@ import PSPData.UserData;
  */
 public abstract class AbstractBox {
     
-    public UserData actionBox(String whereString){
+    public DataSet actionBox(String whereString){
         if(this instanceof AbstractSQLBox){
-            return getUserData(whereString);
+            return getDataSet(whereString);
         }else{
             return function(whereString);
         }
     }
     
-    public UserData actionBox(UserData... userdatas){
-        return function(userdatas);
+    public DataSet actionBox(DataSet... dataSets){
+        return function(dataSets);
     }
 
-    public UserData function(UserData... args) {
+    public DataSet function(DataSet... args) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public UserData getUserData(String whereString) {
+    public DataSet getDataSet(String whereString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public UserData function(String whereString) {
+    public DataSet function(String whereString) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

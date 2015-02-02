@@ -69,10 +69,11 @@ public abstract class AbstractSQLBox extends AbstractBox{
         return result;
     }
     
+    /*
     //接続〜クローズまでを一括して実行
     //最終的に、このメソッドが呼ばれる
     @Override
-    public UserData getUserData(String whereString) {
+    public UserData getData(String whereString) {
         connection();
         ResultSet result = getResultSet(createSQL(whereString));
         UserData ps = new UserData(this.keyString,this.valueString,result);
@@ -98,8 +99,9 @@ public abstract class AbstractSQLBox extends AbstractBox{
         close();
         return ps;
     }
+    */
     
-    
+    @Override
     public DataSet getDataSet(String wheresString){
         
         DataSet ds = new DataSet(this.keyString, this.valueString);
