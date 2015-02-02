@@ -14,13 +14,13 @@ import java.util.ArrayList;
 public class DataSet {
     
     private ArrayList<UserData> userdatas;
-    private String xname;
-    private String yname;
+    private String keyString;
+    private String valueString;
     
-    public DataSet(String xname,String yname){
+    public DataSet(String keyString,String valueString){
         this.userdatas = new ArrayList();
-        this.xname = xname;
-        this.yname = yname;
+        this.keyString = keyString;
+        this.valueString = valueString;
     }
 
     public void addUserData(UserData data){
@@ -46,21 +46,26 @@ public class DataSet {
         userdatas.set(index, userdata);
     }
     
-    public String getXname(){
-        return xname;
+    public String getKeyString(){
+        return keyString;
     }
     
-    public void setXname(String xname){
-        this.xname = xname;
+    public void setKeyString(String keyString){
+        this.keyString = keyString;
     }
     
-    public void setYname(String yname){
-        this.yname = yname;
+    public void setValueString(String valueString){
+        this.valueString = valueString;
     }
     
-    public String getYname(){
-        return yname;
+    public String getValueString(){
+        return valueString;
     }
-    
-    
+
+    public void debugPrint() {
+        for(UserData ud : userdatas){
+            System.out.println("ST_ID = " + ud.getST_ID());
+            ud.debugPrint();
+        }
+    }
 }

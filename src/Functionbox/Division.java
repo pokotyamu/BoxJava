@@ -5,8 +5,8 @@
  */
 package Functionbox;
 
+import PSPData.DataSet;
 import PSPData.Pair;
-import PSPData.UserData;
 
 /**
  *
@@ -15,8 +15,8 @@ import PSPData.UserData;
 public class Division extends AbstractFunctionBox{
 
     @Override
-    protected UserData initUserData(UserData userdata1, UserData userdata2){
-        return new UserData(userdata1.getKeyString(), userdata1.getValueString()+"/"+userdata2.getValueString());
+    protected DataSet initDataSet(DataSet ds1, DataSet ds2){
+        return new DataSet(ds1.getKeyString(), ds1.getValueString()+"/"+ds2.getValueString());
     }
     
     @Override

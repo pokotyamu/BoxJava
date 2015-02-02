@@ -5,8 +5,8 @@
  */
 package Functionbox;
 
+import PSPData.DataSet;
 import PSPData.Pair;
-import PSPData.UserData;
 
 /**
  *
@@ -15,8 +15,8 @@ import PSPData.UserData;
 public class MtoH extends AbstractFunctionBox{
     
     @Override
-    protected UserData initUserData(UserData userdata){
-        return new UserData(userdata.getKeyString(), userdata.getValueString()+"(h)");
+    protected DataSet initDataSet(DataSet dataSet){
+        return new DataSet(dataSet.getKeyString(), dataSet.getValueString()+"(h)");
     }
     
     @Override

@@ -5,6 +5,7 @@
  */
 package Functionbox;
 
+import PSPData.DataSet;
 import PSPData.UserData;
 import box.AbstractBox;
 import sqlbox.*;
@@ -15,7 +16,7 @@ import sqlbox.*;
  */
 public class Productivity_k extends AbstractFunctionBox{
     @Override
-    public UserData function(String whereString)
+    public DataSet function(String whereString)
     {
         AbstractBox actloc = new DBBox("PROJECTID", "ACTLOC");
         AbstractBox actmin = new DBBox("PROJECTID", "ACTMIN");
