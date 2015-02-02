@@ -35,15 +35,16 @@ public class UserData {
         int count = 0;
         try {
             while (result.next()) {
-                if(count == 0)
+                if(count < 0)
                 {
                     project_ID = result.getInt("PROJECTID");
-                    count++;
+                    pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
+                    count = 1;
                 }
-                if(project_ID == result.getInt("PROJECTID"))
+                if(project_ID != result.getInt("PROJECTID"))
                 {
                     pairs.add(new Pair(result.getObject(keyString),result.getObject(valueString)));
-                    project_ID++;
+                    project_ID = result.getInt("PROJECTID");
                 }
             }       
         } catch (SQLException ex) {

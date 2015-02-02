@@ -115,7 +115,7 @@ public abstract class AbstractSQLBox extends AbstractBox{
                     ud.setST_ID(rs.getInt("ST_ID"));
                     ud.setClass_ID(rs.getInt("Class_ID"));
                 }else{
-                    if(ud.getST_ID() != rs.getInt("ST_ID") && ud.getClass_ID() != rs.getInt("Class_ID")){
+                    if(ud.getST_ID() != rs.getInt("ST_ID") && ud.getClass_ID() == rs.getInt("Class_ID")){
                         ds.addUserData(ud);
                         ud = new UserData(keyString, valueString,rs.getInt("ST_ID"),rs.getInt("Class_ID"));
                     }

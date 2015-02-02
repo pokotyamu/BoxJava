@@ -23,14 +23,18 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String whereString = " WHERE SUBMITION_ID=1ORDER BY PROJECTID ASC, SUBMITION_ID ASC";
+        String whereString = " WHERE SUBMITION_ID=1 ORDER BY ST_ID ASC,PROJECTID ASC, SUBMITION_ID ASC";
         
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
         AbstractBox div = new Division();
-        DataSet userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        AbstractBox max = new Max();
         sql1.actionBox(whereString).debugPrint();
+        max.actionBox(sql1.actionBox(whereString)).debugPrint();
+        
+        DataSet userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
+        
         mtoh.actionBox(sql2.actionBox(whereString)).debugPrint();
         AbstractBox productivity = new Productivity();
         DataSet pro = productivity.actionBox(whereString);
