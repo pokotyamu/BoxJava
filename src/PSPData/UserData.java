@@ -23,7 +23,8 @@ public class UserData {
 
     private String keyString;
     private String valueString;
-
+    private int st_id;
+    private int class_id;
     //複数人のデータを対象にすることはまだ実装できていない
     //さらに上のくくりでまとめる必要がある
     public UserData(String keyString, String valueString, ResultSet result) {
@@ -69,6 +70,16 @@ public class UserData {
     public UserData(String keyString,String valueString){
         this.keyString = keyString;
         this.valueString = valueString;
+        this.st_id = -1;
+        this.class_id = -1;
+        this.pairs = new ArrayList();
+    }
+    
+    public UserData(String keyString,String valueString,int st_id,int class_id){
+        this.keyString = keyString;
+        this.valueString = valueString;
+        this.st_id = st_id;
+        this.class_id = class_id;
         this.pairs = new ArrayList();
     }
     
@@ -98,6 +109,21 @@ public class UserData {
 
     public void addData(Pair addedPair) {
         this.pairs.add(addedPair);
+    }
+    
+    public int getST_ID(){
+        return this.st_id;
+    }
+    
+    public void setST_ID(int st_id){
+        this.st_id = st_id;
+    }
+    public int getClass_ID(){
+        return this.class_id;
+    }
+    
+    public void setClass_ID(int class_id){
+        this.class_id = class_id;
     }
     
     public void debugPrint(){
