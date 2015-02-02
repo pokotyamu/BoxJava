@@ -5,6 +5,7 @@
  */
 package Functionbox;
 
+import PSPData.DataSet;
 import box.AbstractBox;
 import PSPData.Pair;
 import PSPData.UserData;
@@ -16,40 +17,50 @@ import PSPData.UserData;
 public abstract class AbstractFunctionBox extends AbstractBox{
 
     @Override
-    public UserData function(UserData... args) {
-        if(args.length > 1)            
+    public DataSet function(DataSet... args) {
+        if(args.length > 1)
             return function(args[0],args[1]);
         else
             return function(args[0]);
     }
     
-    protected UserData function(UserData ps){
-        UserData userdata = initUserData(ps);
-        Pair temppPair;
-        for(int index=0;index < ps.getSize();index++){
-            temppPair = ps.getPair(index);
-            userdata.addData(function(temppPair));
+    protected DataSet function(DataSet ds){
+        DataSet dataset = initDataSet(ds);
+        for(UserData ud : ds.getUserDatas()){
+            UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
+            Pair temppPair;
+            for(int index=0;index < ud.getSize();index++){
+                temppPair = ud.getPair(index);
+                addedUserData.addData(function(temppPair));
+            }
+            dataset.addUserData(addedUserData);
         }
-        return userdata;
+        return dataset;
     }
 
-    protected UserData function(UserData ps1,UserData ps2){
-        UserData userdata = initUserData(ps1,ps2);
-        Pair tempps1p;
-        Pair tempps2p;
-        for(int index=0;index < ps1.getSize();index++){
-            tempps1p = ps1.getPair(index);
-            tempps2p = ps2.getPair(index);
-            //マッチングｙ同士のものについては要検討
-            if(tempps1p.matchX(tempps2p)){                
-                userdata.addData(function(tempps1p,tempps2p));
+    protected DataSet function(DataSet ds1,DataSet ds2){
+        DataSet dataset = initDataSet(ds1, ds2);
+        for(int i = 0; i < ds1.getUserDataSize(); i++){
+            UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
+            UserData ud1 = ds1.getUserData(i);
+            UserData ud2 = ds2.getUserData(i);
+            Pair tempud1p;
+            Pair tempud2p;
+            for(int index=0;index < ud1.getSize();index++){
+                tempud1p = ud1.getPair(index);
+                tempud2p = ud2.getPair(index);
+                //マッチングｙ同士のものについては要検討
+                if(tempud1p.matchX(tempud2p)){
+                    addedUserData.addData(function(tempud1p,tempud2p));
+                }
             }
+            dataset.addUserData(addedUserData);
         }
-        return userdata;
-    }
+        return dataset;
+    }        
     
     @Override
-    public UserData function(String whereString){
+    public DataSet function(String whereString){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
@@ -60,15 +71,13 @@ public abstract class AbstractFunctionBox extends AbstractBox{
     protected Pair function(Pair p){
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
 
-    protected UserData initUserData(UserData ps1, UserData ps2){
-        return new UserData("", "");
+    protected DataSet initDataSet(DataSet ds1, DataSet ds2){
+        return new DataSet("", "");
     }
 
-    protected UserData initUserData(UserData ps) {
-        return new UserData("", "");
+    protected DataSet initDataSet(DataSet ds) {
+        return new DataSet("", "");
     }
 
 }

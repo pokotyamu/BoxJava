@@ -5,8 +5,8 @@
  */
 package Functionbox;
 
+import PSPData.DataSet;
 import box.AbstractBox;
-import PSPData.UserData;
 import sqlbox.ProductivitySize;
 import sqlbox.ProductivityTime;
 
@@ -16,7 +16,7 @@ import sqlbox.ProductivityTime;
  */
 public class Productivity extends AbstractFunctionBox{
     @Override
-    public UserData function(String whereString){
+    public DataSet function(String whereString){
         AbstractBox sql1 = new ProductivitySize("PROJECTID","ACTUALA");
         AbstractBox sql2 = new ProductivityTime("PROJECTID", "MYAT");
         AbstractBox mtoh = new MtoH();
