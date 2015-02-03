@@ -25,19 +25,25 @@ public class Max extends AbstractFunctionBox{
     protected DataSet function(DataSet ds){
         DataSet dataset = initDataSet(ds);
         UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
-        System.out.println("UserData Size = " + ds.getUserData(0).getSize());
         
-        // DataSet 内の UserData から最大演習課題数を求める。
-        int max_pro_num = ds.getUserData(0).getSize();
+        // DataSet 内の UserData から最大演習課題番号を求める
+        int max_size = ds.getUserData(0).getSize();
+        int max_pro_num = Integer.parseInt(ds.getUserData(0).getPair(max_size - 1).getX().toString());
+        System.out.println("UserData(0) Max Pro Num = " + max_pro_num);
         for(int i = 1; i < ds.getUserDataSize(); i++)
         {
-            if(max_pro_num < ds.getUserData(i).getSize())
+            // 各 UserData の最後の演習課題の番号を取得
+            max_size = ds.getUserData(i).getSize();
+            int temp = Integer.parseInt(ds.getUserData(i).getPair(max_size - 1).getX().toString());
+            if(max_pro_num < temp)
             {
-                max_pro_num = ds.getUserData(i).getSize();
+                max_pro_num = temp;
             }
         }
+        System.out.println("Max Pro Num = " + max_pro_num);
+                
         
-        for(int index = 0; index < max_pro_num; index++)
+        for(int index = 0; index < max_pro_num-400+1; index++)
         {          
             //System.out.println("index = " + index);
             Pair tempPair = ds.getUserData(0).getPair(index);

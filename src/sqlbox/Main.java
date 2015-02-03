@@ -31,6 +31,7 @@ public class Main {
         AbstractBox div = new Division();
         AbstractBox max = new Max();
         sql1.actionBox(whereString).debugPrint();
+        System.out.println("*****************************************");
         max.actionBox(sql1.actionBox(whereString)).debugPrint();
         
         DataSet userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
