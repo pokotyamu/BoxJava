@@ -8,6 +8,7 @@ package Functionbox;
 import PSPData.DataSet;
 import PSPData.Pair;
 import PSPData.UserData;
+import java.io.IOException;
 
 /**
  *
@@ -27,33 +28,26 @@ public class Max extends AbstractFunctionBox{
         UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         
         // DataSet 内の UserData から最大演習課題番号を求める
-        int max_size = ds.getUserData(0).getSize();
-        int max_pro_num = Integer.parseInt(ds.getUserData(0).getPair(max_size - 1).getX().toString());
-        System.out.println("UserData(0) Max Pro Num = " + max_pro_num);
-        for(int i = 1; i < ds.getUserDataSize(); i++)
+        int max_pro_id = getMaxProjectID(ds);
+               
+        Pair maxPair = new Pair(400,0);
+        Pair tempPair = new Pair(400,0);
+        for(int index = 0; index < max_pro_id-400+1; index++)
         {
-            // 各 UserData の最後の演習課題の番号を取得
-            max_size = ds.getUserData(i).getSize();
-            int temp = Integer.parseInt(ds.getUserData(i).getPair(max_size - 1).getX().toString());
-            if(max_pro_num < temp)
+            for(int i = 0; i < ds.getUserDataSize(); i++)
             {
-                max_pro_num = temp;
-            }
-        }
-        System.out.println("Max Pro Num = " + max_pro_num);
+                try{
+                    tempPair = ds.getUserData(i).getPair(index);
+                }catch(ArithmeticException e){
+                    System.out.println("ST_ID = " + (i+1) + " don't have " + (index+400) + " data");
+                }
                 
-        
-        for(int index = 0; index < max_pro_num-400+1; index++)
-        {          
-            //System.out.println("index = " + index);
-            Pair tempPair = ds.getUserData(0).getPair(index);
-            for(int i = 1; i < ds.getUserDataSize(); i++)
-            {
-                if(tempPair.matchX(ds.getUserData(i).getPair(index)) 
-                        && Double.parseDouble(tempPair.getY().toString()) < Double.parseDouble(ds.getUserData(i).getPair(index).getY().toString()))
+                if(maxPair.matchX(tempPair) 
+                        && Double.parseDouble(maxPair.getY().toString()) < Double.parseDouble(tempPair.getY().toString()))
                 {
                     tempPair = ds.getUserData(i).getPair(index);
                 }
+                
             }
             addedUserData.addData(tempPair);
         }
@@ -61,4 +55,23 @@ public class Max extends AbstractFunctionBox{
         return dataset;
     }
     
+    // DataSet 内の UserData から最大演習課題番号を求める
+    int getMaxProjectID(DataSet ds)
+    {
+        int max_size = ds.getUserData(0).getSize();
+        int max_pro_id = Integer.parseInt(ds.getUserData(0).getPair(max_size - 1).getX().toString());
+        System.out.println("UserData(0) Max Pro Num = " + max_pro_id);
+        for(int i = 1; i < ds.getUserDataSize(); i++)
+        {
+            // 各 UserData の最後の演習課題の番号を取得
+            max_size = ds.getUserData(i).getSize();
+            int temp = Integer.parseInt(ds.getUserData(i).getPair(max_size - 1).getX().toString());
+            if(max_pro_id < temp)
+            {
+                max_pro_id = temp;
+            }
+        }
+        System.out.println("Max Pro Num = " + max_pro_id);
+        return max_pro_id;
+    }
 }
