@@ -26,7 +26,18 @@ public class Max extends AbstractFunctionBox{
         DataSet dataset = initDataSet(ds);
         UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         System.out.println("UserData Size = " + ds.getUserData(0).getSize());
-        for(int index = 0; index < 8; index++)//ds.getUserData(0).getSize(); index++ )
+        
+        // DataSet 内の UserData から最大演習課題数を求める。
+        int max_pro_num = ds.getUserData(0).getSize();
+        for(int i = 1; i < ds.getUserDataSize(); i++)
+        {
+            if(max_pro_num < ds.getUserData(i).getSize())
+            {
+                max_pro_num = ds.getUserData(i).getSize();
+            }
+        }
+        
+        for(int index = 0; index < max_pro_num; index++)
         {          
             //System.out.println("index = " + index);
             Pair tempPair = ds.getUserData(0).getPair(index);
