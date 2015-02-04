@@ -30,25 +30,29 @@ public class Max extends AbstractFunctionBox{
         // DataSet 内の UserData から最大演習課題番号を求める
         int max_pro_id = getMaxProjectID(ds);
                
-        Pair maxPair = new Pair(400,0);
         Pair tempPair = new Pair(400,0);
         for(int index = 0; index < max_pro_id-400+1; index++)
         {
+            int x = index+400;
+            Pair maxPair = new Pair(x,0);
             for(int i = 0; i < ds.getUserDataSize(); i++)
             {
+                // 演習課題ごとのユーザの値をみていく
                 try{
-                    tempPair = ds.getUserData(i).getPair(index);
+                    if(maxPair.matchX( ds.getUserData(i).getPair(index) ))
+                    {
+                        tempPair = ds.getUserData(i).getPair(index);
+                    }
                 }catch(java.lang.IndexOutOfBoundsException e){
                     System.out.println("ST_ID = " + (i+1) + " don't have " + (index+400) + " data");
                 }
                 
-                if(maxPair.matchX(tempPair) 
-                        && Double.parseDouble(maxPair.getY().toString()) < Double.parseDouble(tempPair.getY().toString()))
+                if(Double.parseDouble(maxPair.getY().toString()) < Double.parseDouble(tempPair.getY().toString()))
                 {
-                    tempPair = ds.getUserData(i).getPair(index);
+                    maxPair = tempPair;
                 }
             }
-            addedUserData.addData(tempPair);
+            addedUserData.addData(maxPair);
         }
         dataset.addUserData(addedUserData);
         return dataset;
