@@ -15,6 +15,8 @@ import java.io.IOException;
  * @author pokotyamu
  */
 public class Max extends AbstractFunctionBox{
+    int PROID = 399;
+    
     
     @Override
     protected DataSet initDataSet(DataSet ds){
@@ -25,21 +27,43 @@ public class Max extends AbstractFunctionBox{
     @Override
     protected DataSet function(DataSet ds){
         DataSet dataset = initDataSet(ds);
+        
+        // 決め打ち DataSet
+        DataSet dummy_ds = new DataSet("PROJECTID", "dimmyACTMIN");
+        int SUBMITION_ID = 1;
+        for(int st_id = 1; st_id < 4; st_id++)
+        {
+            UserData dummy_ud = new UserData("PROJECTID", "dummyACTMIN", st_id, 201301);
+            for(int pro_id = 400; pro_id < 403; pro_id++)
+            {
+                dummy_ud.addData( new Pair(pro_id, st_id, SUBMITION_ID) );
+                if(st_id == 3)
+                {
+                    dummy_ud.addData(new Pair(403,st_id, SUBMITION_ID));
+                }
+            }
+            dummy_ds.addUserData(dummy_ud);
+        }
+        ds = dummy_ds;
+        
+        
         UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         
         // DataSet 内の UserData から最大演習課題番号を求める
         int max_pro_id = getMaxProjectID(ds);
                
-        Pair tempPair = new Pair(400,0);
-        for(int index = 0; index < max_pro_id-400+1; index++)
+        for(int index = 0; index < max_pro_id-PROID; index++)
         {
-            int x = index+400;
-            Pair maxPair = new Pair(x,0);
+            Pair maxPair = new Pair("","");
+            Pair tempPair = new Pair("","");
             for(int i = 0; i < ds.getUserDataSize(); i++)
             {
                 // 演習課題ごとのユーザの値をみていく
                 try{
-                    if(maxPair.matchX( ds.getUserData(i).getPair(index) ))
+                    if(maxPair.getX() == "")
+                    {
+                        maxPair = ds.getUserData(i).getPair(index);
+                    }else if(maxPair.matchX( ds.getUserData(i).getPair(index) ))
                     {
                         tempPair = ds.getUserData(i).getPair(index);
                     }
