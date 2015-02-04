@@ -27,6 +27,7 @@ public class Max extends AbstractFunctionBox{
     @Override
     protected DataSet function(DataSet ds){
         DataSet dataset = initDataSet(ds);
+        UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         
         // 決め打ち DataSet
         DataSet dummy_ds = new DataSet("PROJECTID", "dimmyACTMIN");
@@ -37,17 +38,16 @@ public class Max extends AbstractFunctionBox{
             for(int pro_id = 400; pro_id < 403; pro_id++)
             {
                 dummy_ud.addData( new Pair(pro_id, st_id, SUBMITION_ID) );
-                if(st_id == 3)
-                {
-                    dummy_ud.addData(new Pair(403,st_id, SUBMITION_ID));
-                }
+            }
+            if(st_id == 3)
+            {
+                dummy_ud.addData(new Pair(403,st_id, SUBMITION_ID));
             }
             dummy_ds.addUserData(dummy_ud);
+            dummy_ud.debugPrint();
         }
         ds = dummy_ds;
         
-        
-        UserData addedUserData = new UserData(dataset.getKeyString(), dataset.getValueString());
         
         // DataSet 内の UserData から最大演習課題番号を求める
         int max_pro_id = getMaxProjectID(ds);
@@ -66,15 +66,14 @@ public class Max extends AbstractFunctionBox{
                     }else if(maxPair.matchX( ds.getUserData(i).getPair(index) ))
                     {
                         tempPair = ds.getUserData(i).getPair(index);
+                        if(Double.parseDouble(maxPair.getY().toString()) < Double.parseDouble(tempPair.getY().toString()))
+                        {
+                            maxPair = tempPair;
+                        }
                     }
                 }catch(java.lang.IndexOutOfBoundsException e){
                     System.out.println("ST_ID = " + (i+1) + " don't have " + (index+400) + " data");
-                }
-                
-                if(Double.parseDouble(maxPair.getY().toString()) < Double.parseDouble(tempPair.getY().toString()))
-                {
-                    maxPair = tempPair;
-                }
+                }                
             }
             addedUserData.addData(maxPair);
         }
