@@ -38,7 +38,7 @@ public class Max extends AbstractFunctionBox{
             {
                 try{
                     tempPair = ds.getUserData(i).getPair(index);
-                }catch(ArithmeticException e){
+                }catch(java.lang.IndexOutOfBoundsException e){
                     System.out.println("ST_ID = " + (i+1) + " don't have " + (index+400) + " data");
                 }
                 
@@ -47,7 +47,6 @@ public class Max extends AbstractFunctionBox{
                 {
                     tempPair = ds.getUserData(i).getPair(index);
                 }
-                
             }
             addedUserData.addData(tempPair);
         }

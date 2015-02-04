@@ -33,6 +33,7 @@ public class Main {
         sql1.actionBox(whereString).debugPrint();
         System.out.println("*****************************************");
         max.actionBox(sql1.actionBox(whereString)).debugPrint();
+        System.out.println("*****************************************");
         
         DataSet userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         
