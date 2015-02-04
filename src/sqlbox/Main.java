@@ -37,7 +37,7 @@ public class Main {
         
         DataSet userdata = div.actionBox(sql1.actionBox(whereString), mtoh.actionBox(sql2.actionBox(whereString)));
         
-        mtoh.actionBox(sql2.actionBox(whereString)).debugPrint();
+        //mtoh.actionBox(sql2.actionBox(whereString)).debugPrint();
         AbstractBox productivity = new Productivity();
         DataSet pro = productivity.actionBox(whereString);
         
@@ -46,7 +46,7 @@ public class Main {
         //data = sql3.actionBox(whereString,"1");
        
         div.actionBox(productivity.actionBox(whereString),userdata);
-        userdata.debugPrint();
-        pro.debugPrint();
+        //userdata.debugPrint();
+        //pro.debugPrint();
     }
 }
