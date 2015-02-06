@@ -64,7 +64,6 @@ public class DataSet {
 
     public void debugPrint() {
         for(UserData ud : userdatas){
-            System.out.println("ST_ID = " + ud.getST_ID());
             ud.debugPrint();
         }
     }

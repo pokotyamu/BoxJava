@@ -7,6 +7,7 @@ package sqlbox;
 
 
 import Functionbox.Max;
+import PSPData.DataSet;
 import box.AbstractBox;
 
 /**
@@ -21,13 +22,10 @@ public class Main {
     public static void main(String[] args) {
         String whereString = " WHERE CLASS_ID=201301 AND SUBMITION_ID=1 ORDER BY ST_ID ASC,PROJECTID ASC, SUBMITION_ID ASC";
         AbstractBox actmin = new ACTMIN("PROJECTID", "ACTMIN");
-        actmin.actionBox(whereString).debugPrint();
-        System.out.println("**********************************************");
         AbstractBox max = new Max();
-        actmin.actionBox(whereString).debugPrint();
         max.actionBox(actmin.actionBox(whereString)).debugPrint();
        
-        
+
 
     }
 }

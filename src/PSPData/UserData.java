@@ -128,6 +128,7 @@ public class UserData {
     }
     
     public void debugPrint(){
+        System.out.println(dataInfo());
         System.out.println(dataLabel());
         System.out.println(getPairs());
     }
@@ -139,5 +140,9 @@ public class UserData {
             userdata.addData(p);
         }
         return userdata;
+    }
+
+    private String dataInfo() {
+        return "[ST_ID="+this.st_id+",Class_ID="+this.class_id+"]";
     }
 }
