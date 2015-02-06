@@ -76,7 +76,7 @@ public class UserData {
         this.pairs = new ArrayList();
     }
     
-    public UserData(String keyString,String valueString,int st_id,int class_id){
+    public UserData(String keyString, String valueString, int st_id, int class_id){
         this.keyString = keyString;
         this.valueString = valueString;
         this.st_id = st_id;
@@ -135,7 +135,7 @@ public class UserData {
     
     @Override
     public UserData clone(){
-        UserData userdata = new UserData(keyString, valueString);
+        UserData userdata = new UserData(keyString, valueString,st_id,class_id);
         for(Pair p : this.pairs){
             userdata.addData(p);
         }

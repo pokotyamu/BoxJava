@@ -26,7 +26,7 @@ public class Max extends AbstractFunctionBox{
     
     @Override
     protected DataSet function(DataSet ds){
-        UserData addedUserData = new UserData(ds.getKeyString(), ds.getValueString()+"_MAX");
+        UserData addedUserData = new UserData(ds.getKeyString(), ds.getValueString()+"_MAX",-1,ds.getUserData(0).getClass_ID());
         DataSet dataset = new DataSet(addedUserData.getKeyString(), addedUserData.getValueString());
         // DataSet 内の UserData から最大演習課題番号を求める
         int max_pro_id = getMaxProjectID(ds);
@@ -51,7 +51,7 @@ public class Max extends AbstractFunctionBox{
                     }
                     }catch(java.lang.IndexOutOfBoundsException e){
                             System.out.println("ST_ID = " + (i+1) + " don't have " + (index+400) + " data");
-                }                
+                }
             }
             addedUserData.addData(maxPair);
         }
